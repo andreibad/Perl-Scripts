@@ -4,7 +4,7 @@ use strict;
 require julie;
 
 
-print "objects\n";
+print "objects \n";
 
 julie->walk;
 julie->speak;
