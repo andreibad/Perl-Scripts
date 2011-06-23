@@ -12,7 +12,7 @@ our @ISA = qw(human);
 sub walk{
 my $class = shift;
 $class->SUPER::walk;
-print "mersich\n";
+print "mersich yoy\n";
 
 }
 
