@@ -5,6 +5,6 @@ require julie;
 
 
 print "objects \n";
-
+print "oo\n";
 julie->walk;
 julie->speak;
