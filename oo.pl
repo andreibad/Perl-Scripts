@@ -2,9 +2,12 @@
 use warnings;
 use strict;
 require julie;
-
-
-print "objects \n";
-print "oo\n";
+require horse;
+print "walking: \n";
 julie->walk;
+horse->walk;
+
+print "speaking: \n";
 julie->speak;
+julie->speak("yoy");
+horse->speak;
