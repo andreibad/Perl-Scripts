@@ -11,10 +11,10 @@ horse->walk;
 
 my $me = human->new('andrei'); 
 $me->setAge(29);
-print "$me->name is $me->getAge years old\n";
+print $me->name,' is ',  $me->getAge, " years old\n";
 
 $me->speak("hello, i like fennesz"); 
-
+$me->speak();
 
 print "speaking: \n";
 julie->speak;

@@ -11,9 +11,7 @@ sub speak
 
 	my $name = '';
 	if (ref $class){
-		$name = $$class;
-		print "speaking for a human of $name\n";
-
+		$name = $class->name;
 	}
 	else{
 		$name = $class;
