@@ -6,6 +6,45 @@ package human;
 require livingcreature;
 our @ISA = qw(livingcreature);
 
+
+sub new 
+{
+	my $self = shift->SUPER::new(@_);
+	$self->{$_} = 0 for qw(haircolor musicstyle university);
+
+	return $self;
+}
+
+sub haircolor{
+	my $class = shift;
+	my $color = shift;
+
+	$class->{haircolor} = $color;
+}
+sub musicstyle{
+	my $class = shift;
+	my $style = shift;
+
+	$class->{musicstyle}= $style;
+}
+
+sub university{
+	my $class = shift;
+	my $university = shift; 
+
+	$class->{university} = $university;
+
+}
+
+
+sub humantraits{
+	my $self = shift;
+	foreach my  $key (keys %$self){
+		print $key ,": ",  $self->{$key}, "\n";
+	}
+}
+
+
 sub speak
 {	my $class = shift;
 

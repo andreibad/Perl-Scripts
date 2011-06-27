@@ -27,9 +27,15 @@ sub setAge{
 	my $self = shift;
 	$self->{Age} = shift;
 }
+
 sub getAge{
 	my $self = shift;
-	$self->{Age};
+	if (ref $self){	
+		return $self->{Age};
+	}
+	else{
+		return 100;
+	}
 }
 
 
@@ -38,6 +44,11 @@ sub walk{
 	my $class = shift;
 	print "$class walks\n";
 
+}
+
+sub DESTROY {
+my $self = shift;
+print $self->name , " has died\n";
 }
 
 
