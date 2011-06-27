@@ -37,5 +37,9 @@ $me->university("berkeley");
 
 $me->humantraits;
 
+if ($me->isa('human')){
+print $me->name ," is human!\n";
+
+}
 
 
