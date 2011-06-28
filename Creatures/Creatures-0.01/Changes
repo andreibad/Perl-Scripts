@@ -1,0 +1,6 @@
+Revision history for Perl extension Creatures.
+
+0.01  Tue Jun 28 13:31:19 2011
+	- original version; created by h2xs 1.23 with options
+		-XAn Creatures
+

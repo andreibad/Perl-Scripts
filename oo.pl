@@ -4,6 +4,9 @@ use strict;
 require julie;
 require horse;
 
+
+use human qw(all);
+
 #testing class methods
 
 print "WALKING: \n";

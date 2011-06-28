@@ -4,6 +4,13 @@ use warnings;
 
 package human;
 require livingcreature;
+use base qw(Exporter);
+
+our @EXPORT = qw(new speak);
+our @EXPORT_OK = qw(haircolor musicstyle university humantraits );
+our %EXPORT_TAGS = ( all => [@EXPORT, @EXPORT_OK]);
+
+
 our @ISA = qw(livingcreature);
 
 

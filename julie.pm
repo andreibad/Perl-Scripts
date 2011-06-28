@@ -4,7 +4,7 @@ use strict;
 
 
 package julie;
-require human;
+use human qw(all);
 
 our @ISA = qw(human);
 
