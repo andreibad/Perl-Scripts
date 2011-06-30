@@ -15,62 +15,93 @@ our @ISA = qw(Exporter);
 # This allows declaration	use Creatures ':all';
 # If you do not need this, moving things directly into @EXPORT or @EXPORT_OK
 # will save memory.
-our %EXPORT_TAGS = ( 'all' => [ qw(
-	
-) ] );
 
-our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
 
 our @EXPORT = qw(
-	
+new getName setAge getAge walk 	
 );
+our %EXPORT_TAGS = ( 'all' => \@EXPORT );
+our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
 
 our $VERSION = '0.01';
 
 
 # Preloaded methods go here.
 
+sub new { 
+        my $class = shift; 
+        my $name = shift; 
+        my $self = {Name => $name, Age=>0}; 
+ 
+        bless $self , $class; 
+ 
+} 
+sub getName{ 
+        my $self = shift; 
+        if (ref $self ){ 
+                return $self->{Name};    
+        } 
+        else{ 
+                return "an unnamed $self"; 
+        } 
+} 
+ 
+sub setAge{ 
+        my $self = shift; 
+        $self->{Age} = shift; 
+} 
+ 
+sub getAge{ 
+        my $self = shift; 
+        if (ref $self){  
+                return $self->{Age}; 
+        } 
+        else{ 
+                return 100; 
+        } 
+} 
+ 
+ 
+sub walk{ 
+ 
+        my $class = shift; 
+        print "$class walks\n"; 
+ 
+} 
+ 
+sub DESTROY { 
+my $self = shift; 
+print $self->name , " has died\n"; 
+} 
+
+
+
 1;
 __END__
-# Below is stub documentation for your module. You'd better edit it!
 
-=head1 NAME
+=head1 Creatures 
 
-Creatures - Perl extension for blah blah blah
+Creatures - Perl extension for creating creatures
 
 =head1 SYNOPSIS
 
   use Creatures;
-  blah blah blah
+  
 
 =head1 DESCRIPTION
 
-Stub documentation for Creatures, created by h2xs. It looks like the
-author of the extension was negligent enough to leave the stub
-unedited.
-
-Blah blah blah.
+This module provides some generic methods that many creatures have 
 
 =head2 EXPORT
 
 None by default.
 
 
-
 =head1 SEE ALSO
-
-Mention other useful documentation such as the documentation of
-related modules or operating system documentation (such as man pages
-in UNIX), or any relevant external documentation such as RFCs or
-standards.
-
-If you have a mailing list set up for your module, mention it here.
-
-If you have a web site set up for your module, mention it here.
 
 =head1 AUTHOR
 
-badulescua, E<lt>badulescua@E<gt>
+badulescua, E<lt>andrei.badulescu@gmail.comE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
