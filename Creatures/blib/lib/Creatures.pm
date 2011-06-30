@@ -20,8 +20,6 @@ our @ISA = qw(Exporter);
 our @EXPORT = qw(
 new getName setAge getAge walk 	
 );
-our %EXPORT_TAGS = ( 'all' => \@EXPORT );
-our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
 
 our $VERSION = '0.01';
 
@@ -71,7 +69,7 @@ sub walk{
  
 sub DESTROY { 
 my $self = shift; 
-print $self->name , " has died\n"; 
+print $self->getName , " has died\n"; 
 } 
 
 

@@ -1,16 +1,14 @@
 use strict;
 use warnings;
 
-package Human;
+package Creatures::Human;
 require Creatures;
 use base qw(Exporter);
 
-our @EXPORT = qw(new speak);
-our @EXPORT_OK = qw(haircolor musicstyle university humantraits );
-our %EXPORT_TAGS = ( all => [@EXPORT, @EXPORT_OK]);
+our @EXPORT = qw(new speak getHaircolor getMusicstyle getUniversity setHaircolor setMusicstyle setUniversity getHumantraits );
 
 
-our @ISA = qw(livingcreature);
+our @ISA = qw(Creatures);
 
 
 sub new 
@@ -20,6 +18,22 @@ sub new
 
         return $self;
 }
+
+sub getHaircolor{
+        my $class = shift;
+        $class->{haircolor};
+}
+sub getMusicstyle{
+        my $class = shift;
+        $class->{musicstyle};
+}
+
+sub getUniversity{
+        my $class = shift;
+        $class->{university};
+
+}
+
 
 sub setHaircolor{
         my $class = shift;
@@ -45,7 +59,7 @@ sub setUniversity{
 sub getHumantraits{
         my $self = shift;
         foreach my  $key (keys %$self){
-                print $key ,": ",  $self->{$key}, "\n";
+                print $key ,": ",  $self->{$key}, ",";
         }
 }
 
@@ -55,7 +69,7 @@ sub speak
 
         my $name = '';
         if (ref $class){
-                $name = $class->name;
+                $name = $class->getName;
         }
         else{
                 $name = $class;
@@ -67,10 +81,10 @@ sub speak
         }
         if ($sound ne '')
         {
-                print "$name says $sound\n";
+                return "$name says $sound";
         }
         else{
-                print "$name says hummm\n";
+                return "$name says hummm";
         }
 
 }
