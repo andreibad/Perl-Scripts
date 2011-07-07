@@ -1,0 +1,9 @@
+$files = {};
+$expr_list = [
+               {
+                 'expr' => '$_',
+                 'depth' => -1
+               }
+             ];
+$eval_saved_text = undef;
+$main_win_geometry = '800x600+728+306';
