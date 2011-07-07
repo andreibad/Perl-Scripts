@@ -16,3 +16,24 @@ print Dumper ($a1, $a7);
 
 #print Dumper(@sorted);
 
+
+my $a = 5;
+my $left = ++$a;
+my $b = 5;
+my $right = $b++;
+print "$left $right \n";
+print '-' x 80 . "\n";
+
+my @alphabet = ('A' .. 'Z');
+print Dumper (@alphabet);
+
+
+print "say something or say stop to exit program\n";
+while (<STDIN>){
+	chomp($_);	
+	if ($_ eq "stop" ){
+		last;
+	}
+	print $_."\n";
+}
+
