@@ -6,19 +6,60 @@ use warnings;
 use Tools;
 use Data::Dumper;
 
+our $units ;
+
 
 open (INPUT, $ARGV[0]) or die "cannot open input file\n";
 
 my %HoA;
 while ( <INPUT> ) {
-        
-	print "before regex: ". Dumper ($_);	
 	next unless s/^(.*?):\s*//;
-	print "after regex: " . Dumper ($_);	
 	$HoA{$1} = [ split ];
 }
 
 print Dumper (%HoA);
+
+@{$HoA{'simpsons'}} =  map { uc $_} @{$HoA{'simpsons'}}; 
+
+print Dumper %HoA;
+
+my $foo = "Some value";
+my $bar = "Another value";
+
+who_am_i( *foo );
+who_am_i( *bar );
+
+sub who_am_i
+    {
+    my $glob = shift;
+
+    print "I'm from package " . *{$glob}{PACKAGE} . "\n";
+    print "My name is "       . *{$glob}{NAME}    . "\n";
+    }
+
+#Typeglobs don't have to dereference
+
+*units = populate() ;
+print $main::units{'km'}, "\n";
+# Assign \%newhash to the typeglob
+# Prints 70; no dereferencing needed!
+my $hashref =populate();
+print $hashref->{kg}, "\n"; 
+
+
+sub populate {
+my %newhash = (km => 10, kg => 70);
+return \%newhash;
+}
+
+
+#foreach my $entry ( keys %main:: )
+#    {
+#    print "$entry\n";
+#    }
+#
+
+
 
 
 #my @array = qw(13 4 7 2 9 8 5);
