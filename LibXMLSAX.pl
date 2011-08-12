@@ -5,8 +5,6 @@ use XML::LibXML::SAX;
 
 use MySAXHandler;
 
-my $parser = XML::LibXML::SAX::ParserFactory->parser(
-		Handler => MySAXHandler->new
-		);
 
+ my $parser = XML::LibXML::SAX->new( Handler => MySAXHandler->new );
 $parser->parse_uri($ARGV[0]);
