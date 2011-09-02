@@ -1,0 +1,37 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_bytes {
+	label="bytes";
+	"bytes::import";
+}
+subgraph cluster_Data_Dumper {
+	label="Data::Dumper";
+	"Data::Dumper::BEGIN@22";
+	"Data::Dumper::BEGIN@16";
+	"Data::Dumper::new";
+	"Data::Dumper::Dump";
+	"Data::Dumper::BEGIN@683";
+	"Data::Dumper::Dumper";
+	"Data::Dumper::Dumpxs";
+	"Data::Dumper::BEGIN@20";
+}
+subgraph cluster_Exporter {
+	label="Exporter";
+	"Exporter::import";
+}
+subgraph cluster_main {
+	label="main";
+	"main::BEGIN@4";
+	"main::findCircularReferences";
+}
+"main::BEGIN@4" -> "Data::Dumper::BEGIN@683";
+"main::findCircularReferences" -> "Data::Dumper::Dumper";
+"main::BEGIN@4" -> "Data::Dumper::BEGIN@22";
+"Data::Dumper::Dump" -> "Data::Dumper::Dumpxs";
+"main::BEGIN@4" -> "Data::Dumper::BEGIN@20";
+"Data::Dumper::BEGIN@683" -> "bytes::import";
+"Data::Dumper::Dumper" -> "Data::Dumper::Dump";
+"Data::Dumper::BEGIN@20" -> "Exporter::import";
+"main::BEGIN@4" -> "Data::Dumper::BEGIN@16";
+"Data::Dumper::Dumpxs" -> "Data::Dumper::new";
+}

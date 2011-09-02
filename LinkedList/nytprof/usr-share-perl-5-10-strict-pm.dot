@@ -1,0 +1,18 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+	"strict::CORE:regcomp";
+	"strict::bits";
+	"strict::CORE:match";
+}
+subgraph cluster_main {
+	label="main";
+	"main::BEGIN@1";
+}
+"main::BEGIN@1" -> "strict::CORE:regcomp";
+"main::BEGIN@1" -> "strict::CORE:match";
+"main::BEGIN@1" -> "strict::bits";
+"main::BEGIN@1" -> "strict::import";
+}

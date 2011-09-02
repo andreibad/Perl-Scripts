@@ -1,0 +1,47 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+	"strict::CORE:regcomp";
+	"strict::bits";
+	"strict::CORE:match";
+}
+subgraph cluster_warnings {
+	label="warnings";
+	"warnings::CORE:regcomp";
+	"warnings::CORE:match";
+	"warnings::import";
+}
+subgraph cluster_LinkedListNode {
+	label="LinkedListNode";
+	"LinkedListNode::getSuccessor";
+	"LinkedListNode::getDatum";
+	"LinkedListNode::setSuccessor";
+	"LinkedListNode::new";
+}
+subgraph cluster_main {
+	label="main";
+	"main::BEGIN@2";
+	"main::BEGIN@1";
+	"main::findCircularReferences";
+	"main::BEGIN@5";
+	"main::RUNTIME";
+}
+"main::BEGIN@2" -> "warnings::CORE:match";
+"main::findCircularReferences" -> "LinkedListNode::getSuccessor";
+"main::RUNTIME" -> "LinkedListNode::getSuccessor";
+"main::BEGIN@1" -> "strict::CORE:regcomp";
+"main::RUNTIME" -> "LinkedListNode::setSuccessor";
+"main::BEGIN@1" -> "strict::CORE:match";
+"main::RUNTIME" -> "LinkedListNode::new";
+"main::BEGIN@5" -> "main::BEGIN@1";
+"main::RUNTIME" -> "main::BEGIN@1";
+"main::BEGIN@2" -> "warnings::import";
+"main::BEGIN@1" -> "strict::bits";
+"main::BEGIN@5" -> "main::BEGIN@2";
+"main::RUNTIME" -> "main::BEGIN@2";
+"main::BEGIN@2" -> "warnings::CORE:regcomp";
+"main::BEGIN@1" -> "strict::import";
+"main::findCircularReferences" -> "LinkedListNode::getDatum";
+}

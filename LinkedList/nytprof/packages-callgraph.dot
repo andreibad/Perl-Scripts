@@ -1,0 +1,18 @@
+digraph {
+graph [overlap=false]
+node [shape=doublecircle];
+"main" -> "overload";
+"Data::Dumper" -> "bytes";
+"Data::Dumper" -> "Exporter";
+"main" -> "main";
+"main" -> "Data::Dumper";
+"Data::Dumper" -> "Data::Dumper";
+"main" -> "XSLoader";
+"overload" -> "warnings::register";
+"main" -> "Exporter";
+"main" -> "LinkedListNode";
+"Exporter" -> "Exporter";
+"warnings::register" -> "warnings::register";
+"main" -> "strict";
+"main" -> "warnings";
+}

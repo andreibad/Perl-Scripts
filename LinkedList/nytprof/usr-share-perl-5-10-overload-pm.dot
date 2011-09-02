@@ -1,0 +1,17 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_warnings_register {
+	label="warnings::register";
+	"warnings::register::import";
+}
+subgraph cluster_overload {
+	label="overload";
+	"overload::BEGIN@139";
+}
+subgraph cluster_main {
+	label="main";
+	"main::BEGIN@4";
+}
+"main::BEGIN@4" -> "overload::BEGIN@139";
+"overload::BEGIN@139" -> "warnings::register::import";
+}

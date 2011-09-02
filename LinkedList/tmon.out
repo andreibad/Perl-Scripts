@@ -1,0 +1,145 @@
+#fOrTyTwO
+$hz=100;
+$XS_VERSION='DProf 20080331.00';
+# All values are given in HZ
+$over_utime=3; $over_stime=0; $over_rtime=2;
+$over_tests=10000;
+$rrun_utime=1; $rrun_stime=0; $rrun_rtime=1;
+$total_marks=100                                                                                                                                                                                   
+
+PART2
+@ 0 0 1
+& 2 main BEGIN
++ 2
+& 3 strict bits
++ 3
+- 3
+& 4 strict import
++ 4
+- 4
+- 2
+& 5 main BEGIN
++ 5
+& 6 warnings import
++ 6
+- 6
+- 5
+& 7 main BEGIN
++ 7
+& 8 Data::Dumper BEGIN
++ 8
+- 8
+& 9 Data::Dumper BEGIN
++ 9
+& a Exporter import
++ a
+- a
+- 9
+& b Data::Dumper BEGIN
++ b
+- b
+@ 1 0 0
+& c Data::Dumper BEGIN
++ c
+& d bytes import
++ d
+- d
+- c
+& e overload BEGIN
++ e
+& f warnings::register import
++ f
+& 10 warnings::register mkMask
++ 10
+- 10
++ 10
+- 10
+- f
+- e
+& 11 XSLoader load
++ 11
+& 12 DynaLoader dl_load_file
++ 12
+- 12
+& 13 DynaLoader dl_undef_symbols
++ 13
+- 13
+& 14 DynaLoader dl_find_symbol
++ 14
+- 14
+& 15 DynaLoader dl_install_xsub
++ 15
+- 15
+& 16 Data::Dumper bootstrap
++ 16
+- 16
+- 11
++ a
+- a
+- 7
+& 17 main BEGIN
++ 17
+& 18 main BEGIN
++ 18
++ 4
+- 4
+- 18
+& 19 main BEGIN
++ 19
++ 6
+- 6
+- 19
+- 17
+& 1a LinkedListNode new
++ 1a
+- 1a
++ 1a
+- 1a
+& 1b LinkedListNode setSuccessor
++ 1b
+- 1b
+& 1c LinkedListNode getSuccessor
++ 1c
+- 1c
++ 1a
+- 1a
++ 1b
+- 1b
++ 1c
+- 1c
++ 1b
+- 1b
+& 1d main findCircularReferences
++ 1d
++ 1c
+- 1c
+& 1e LinkedListNode getDatum
++ 1e
+- 1e
++ 1d
++ 1c
+- 1c
++ 1e
+- 1e
++ 1d
++ 1c
+- 1c
++ 1e
+- 1e
++ 1d
+& 1f Data::Dumper Dumper
++ 1f
+& 20 Data::Dumper Dump
++ 20
+& 21 Data::Dumper Dumpxs
++ 21
+& 22 Data::Dumper new
++ 22
+- 22
+- 21
+- 20
+- 1f
+/ 1d
+/ 1d
+/ 1d
+/ 1d

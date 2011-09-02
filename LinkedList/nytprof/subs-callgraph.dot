@@ -1,0 +1,103 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_warnings {
+	label="warnings";
+	"warnings::CORE:regcomp";
+	"warnings::CORE:match";
+	"warnings::import";
+}
+subgraph cluster_XSLoader {
+	label="XSLoader";
+	"XSLoader::load";
+}
+subgraph cluster_bytes {
+	label="bytes";
+	"bytes::import";
+}
+subgraph cluster_Data_Dumper {
+	label="Data::Dumper";
+	"Data::Dumper::BEGIN@22";
+	"Data::Dumper::BEGIN@16";
+	"Data::Dumper::new";
+	"Data::Dumper::Dump";
+	"Data::Dumper::BEGIN@683";
+	"Data::Dumper::Dumper";
+	"Data::Dumper::Dumpxs";
+	"Data::Dumper::BEGIN@20";
+}
+subgraph cluster_overload {
+	label="overload";
+	"overload::BEGIN@139";
+}
+subgraph cluster_Exporter {
+	label="Exporter";
+	"Exporter::import";
+	"Exporter::CORE:match";
+}
+subgraph cluster_main {
+	label="main";
+	"main::BEGIN@2";
+	"main::BEGIN@4";
+	"main::BEGIN@1";
+	"main::findCircularReferences";
+	"main::RUNTIME";
+	"main::BEGIN@5";
+	"main::CORE:print";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+	"strict::CORE:regcomp";
+	"strict::bits";
+	"strict::CORE:match";
+}
+subgraph cluster_warnings_register {
+	label="warnings::register";
+	"warnings::register::mkMask";
+	"warnings::register::import";
+}
+subgraph cluster_LinkedListNode {
+	label="LinkedListNode";
+	"LinkedListNode::getSuccessor";
+	"LinkedListNode::getDatum";
+	"LinkedListNode::setSuccessor";
+	"LinkedListNode::new";
+}
+"main::BEGIN@4" -> "Data::Dumper::BEGIN@683";
+"main::findCircularReferences" -> "Data::Dumper::Dumper";
+"main::BEGIN@4" -> "Data::Dumper::BEGIN@22";
+"main::findCircularReferences" -> "main::findCircularReferences";
+"main::RUNTIME" -> "main::findCircularReferences";
+"main::BEGIN@1" -> "strict::CORE:match";
+"main::BEGIN@4" -> "Data::Dumper::BEGIN@20";
+"Data::Dumper::BEGIN@683" -> "bytes::import";
+"Exporter::import" -> "Exporter::CORE:match";
+"main::BEGIN@1" -> "strict::bits";
+"main::BEGIN@4" -> "Exporter::import";
+"Data::Dumper::BEGIN@20" -> "Exporter::import";
+"main::BEGIN@5" -> "main::BEGIN@2";
+"main::RUNTIME" -> "main::BEGIN@2";
+"main::findCircularReferences" -> "main::CORE:print";
+"main::BEGIN@2" -> "warnings::CORE:match";
+"main::findCircularReferences" -> "LinkedListNode::getSuccessor";
+"main::RUNTIME" -> "LinkedListNode::getSuccessor";
+"main::BEGIN@1" -> "strict::CORE:regcomp";
+"Data::Dumper::Dump" -> "Data::Dumper::Dumpxs";
+"main::BEGIN@4" -> "XSLoader::load";
+"main::RUNTIME" -> "main::BEGIN@5";
+"main::RUNTIME" -> "LinkedListNode::setSuccessor";
+"main::RUNTIME" -> "LinkedListNode::new";
+"warnings::register::import" -> "warnings::register::mkMask";
+"Data::Dumper::Dumper" -> "Data::Dumper::Dump";
+"main::BEGIN@5" -> "main::BEGIN@1";
+"main::RUNTIME" -> "main::BEGIN@1";
+"main::BEGIN@2" -> "warnings::import";
+"main::BEGIN@4" -> "Data::Dumper::BEGIN@16";
+"main::BEGIN@2" -> "warnings::CORE:regcomp";
+"Data::Dumper::Dumpxs" -> "Data::Dumper::new";
+"main::BEGIN@1" -> "strict::import";
+"main::RUNTIME" -> "main::BEGIN@4";
+"main::findCircularReferences" -> "LinkedListNode::getDatum";
+"main::BEGIN@4" -> "overload::BEGIN@139";
+"overload::BEGIN@139" -> "warnings::register::import";
+}

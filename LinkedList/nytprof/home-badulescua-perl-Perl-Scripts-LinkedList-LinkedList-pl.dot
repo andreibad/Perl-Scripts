@@ -1,0 +1,62 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_XSLoader {
+	label="XSLoader";
+	"XSLoader::load";
+}
+subgraph cluster_Data_Dumper {
+	label="Data::Dumper";
+	"Data::Dumper::BEGIN@22";
+	"Data::Dumper::BEGIN@16";
+	"Data::Dumper::BEGIN@683";
+	"Data::Dumper::Dumper";
+	"Data::Dumper::BEGIN@20";
+}
+subgraph cluster_overload {
+	label="overload";
+	"overload::BEGIN@139";
+}
+subgraph cluster_Exporter {
+	label="Exporter";
+	"Exporter::import";
+}
+subgraph cluster_LinkedListNode {
+	label="LinkedListNode";
+	"LinkedListNode::getSuccessor";
+	"LinkedListNode::getDatum";
+	"LinkedListNode::setSuccessor";
+	"LinkedListNode::new";
+}
+subgraph cluster_main {
+	label="main";
+	"main::BEGIN@2";
+	"main::BEGIN@4";
+	"main::BEGIN@1";
+	"main::findCircularReferences";
+	"main::RUNTIME";
+	"main::CORE:print";
+	"main::BEGIN@5";
+}
+"main::BEGIN@4" -> "Data::Dumper::BEGIN@683";
+"main::findCircularReferences" -> "Data::Dumper::Dumper";
+"main::BEGIN@4" -> "Data::Dumper::BEGIN@22";
+"main::findCircularReferences" -> "LinkedListNode::getSuccessor";
+"main::RUNTIME" -> "LinkedListNode::getSuccessor";
+"main::findCircularReferences" -> "main::findCircularReferences";
+"main::RUNTIME" -> "main::findCircularReferences";
+"main::BEGIN@4" -> "XSLoader::load";
+"main::RUNTIME" -> "main::BEGIN@5";
+"main::RUNTIME" -> "LinkedListNode::setSuccessor";
+"main::BEGIN@4" -> "Data::Dumper::BEGIN@20";
+"main::RUNTIME" -> "LinkedListNode::new";
+"main::BEGIN@5" -> "main::BEGIN@1";
+"main::RUNTIME" -> "main::BEGIN@1";
+"main::BEGIN@4" -> "Exporter::import";
+"main::BEGIN@5" -> "main::BEGIN@2";
+"main::RUNTIME" -> "main::BEGIN@2";
+"main::BEGIN@4" -> "Data::Dumper::BEGIN@16";
+"main::RUNTIME" -> "main::BEGIN@4";
+"main::findCircularReferences" -> "LinkedListNode::getDatum";
+"main::BEGIN@4" -> "overload::BEGIN@139";
+"main::findCircularReferences" -> "main::CORE:print";
+}
