@@ -21,19 +21,19 @@ foreach my $name (qw( Twenty Thirty Forty Fifty Sixty Seventy Eighty Ninety )) {
         my ($ones_name) =
           map { lc }
           $dbh->selectrow_array(
-            "SELECT name FROM names WHERE id = $ones_digit" );
+            "SELECT name FROM names WHERE id = $ones_digit");
         $sth->execute( $id++, "$name $ones_name" );
     }
 }
 foreach my $digit ( 1 .. 9 ) {
     my ($hundreds) =
-      $dbh->selectrow_array( "SELECT name FROM names WHERE id = $digit" );
+      $dbh->selectrow_array("SELECT name FROM names WHERE id = $digit");
     $sth->execute( $id++, "$hundreds hundred" );
     foreach my $tens_digit ( 1 .. 99 ) {
         my ($tens_name) =
           map { lc }
           $dbh->selectrow_array(
-            "SELECT name FROM names WHERE id = $tens_digit" );
+            "SELECT name FROM names WHERE id = $tens_digit");
         $sth->execute( $id++, "$hundreds hundred $tens_name" );
     }
 }
