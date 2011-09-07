@@ -4,14 +4,14 @@ use warnings;
 use Data::Dumper;
 use LinkedListNode;
 
-      my $head = LinkedListNode->new(0);
-	$head->setSuccessor( new LinkedListNode(1) );
+my $head = LinkedListNode->new(0);
+$head->setSuccessor( new LinkedListNode(1) );
 my $n1 = $head->getSuccessor();
 $n1->setSuccessor( new LinkedListNode(2) );
 my $n2 = $n1->getSuccessor();
 $n2->setSuccessor( new LinkedListNode(3) );
 my $n3 = $n2->getSuccessor();
-        $n3->setSuccessor( new LinkedListNode(4) );
+$n3->setSuccessor( new LinkedListNode(4) );
 my $n4 = $n3->getSuccessor();
 $n4->setSuccessor( new LinkedListNode(5) );
 my $n5 = $n4->getSuccessor();
